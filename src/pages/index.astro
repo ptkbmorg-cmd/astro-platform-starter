@@ -3,17 +3,35 @@ import Layout from '../layouts/Layout.astro';
 import Markdown from '../components/Markdown.astro';
 
 const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
+PT. Khasana Berkah Mandiri bergerak di bidang **jasa, pengadaan, perawatan, dan instalasi sistem Engineering** yang banyak diaplikasikan pada bangunan dan gedung (Electronic, Electric, dan Mekanikal). :contentReference[oaicite:1]{index=1}
 
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
+**Layanan Utama**
+- Preventive & corrective maintenance sistem elektronik gedung :contentReference[oaicite:2]{index=2}
+- Instalasi & setting **CCTV** :contentReference[oaicite:3]{index=3}
+- Instalasi & setting **Sound System** gedung & live venue :contentReference[oaicite:4]{index=4}
+- **Access Card & Security System** (akses masuk & door contact) :contentReference[oaicite:5]{index=5}
+- **Fire Alarm System** & fire protection :contentReference[oaicite:6]{index=6}
+- Instalasi & jaringan **Fiber Optic Network** :contentReference[oaicite:7]{index=7}
+- Instalasi & setting **Videotron** :contentReference[oaicite:8]{index=8}
+- Pengadaan barang & jasa instalasi sistem engineering :contentReference[oaicite:9]{index=9}
 `;
 ---
 
-<Layout title="Welcome to Astro.">
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
+<Layout title="PT. Khasana Berkah Mandiri">
+  <h1 class="mb-6">PT. Khasana Berkah Mandiri</h1>
+
+  <p class="text-xl mb-8">
+    Mechanical, Electric, Electronic & Engineering — solusi instalasi, perawatan, dan pengadaan sistem engineering gedung.
+  </p>
+
+  <Markdown content={explainer} class="mb-10 text-lg" />
+
+  <div class="flex flex-wrap gap-4">
+    <a href="mailto:khasanaberkahmandiri@gmail.com" class="btn btn-lg sm:min-w-64">Email Kami</a>
+    <a href="https://wa.me/62817732551" class="btn btn-lg sm:min-w-64">WhatsApp</a>
+  </div>
+
+  <p class="mt-8 text-sm opacity-80">
+    Cibubur City Blok C No 17, JL. Raya Transyogi Nagrak, Gunung Putri, Kab. Bogor · Telp: 0817-732551 :contentReference[oaicite:10]{index=10}
+  </p>
 </Layout>
