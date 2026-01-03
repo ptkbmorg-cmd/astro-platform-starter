@@ -1,41 +1,129 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Markdown from '../components/Markdown.astro';
 
-const explainer = `
-PT. Khasana Berkah Mandiri bergerak di bidang **jasa, pengadaan, perawatan, dan instalasi sistem Engineering** yang banyak diaplikasikan pada bangunan dan gedung (Electronic, Electric, dan Mekanikal). :contentReference[oaicite:1]{index=1}
+const services = [
+  {
+    title: 'Maintenance',
+    desc: 'Preventive & corrective maintenance sistem elektronik gedung.'
+  },
+  {
+    title: 'CCTV',
+    desc: 'Instalasi, setting, dan penataan sistem CCTV untuk area gedung & fasilitas.'
+  },
+  {
+    title: 'Sound System',
+    desc: 'Instalasi & setting sound system gedung dan live venue.'
+  },
+  {
+    title: 'Access Control',
+    desc: 'Access card & security system (akses masuk & door contact).'
+  },
+  {
+    title: 'Fire Alarm',
+    desc: 'Fire alarm system & fire protection untuk kebutuhan keselamatan gedung.'
+  },
+  {
+    title: 'Fiber Optic',
+    desc: 'Instalasi & jaringan fiber optic network untuk konektivitas yang stabil.'
+  },
+  {
+    title: 'Videotron',
+    desc: 'Instalasi & setting videotron/LED display untuk kebutuhan informasi & branding.'
+  },
+  {
+    title: 'Pengadaan',
+    desc: 'Pengadaan barang & jasa instalasi sistem engineering.'
+  }
+];
 
-**Layanan Utama**
-- Preventive & corrective maintenance sistem elektronik gedung :contentReference[oaicite:2]{index=2}
-- Instalasi & setting **CCTV** :contentReference[oaicite:3]{index=3}
-- Instalasi & setting **Sound System** gedung & live venue :contentReference[oaicite:4]{index=4}
-- **Access Card & Security System** (akses masuk & door contact) :contentReference[oaicite:5]{index=5}
-- **Fire Alarm System** & fire protection :contentReference[oaicite:6]{index=6}
-- Instalasi & jaringan **Fiber Optic Network** :contentReference[oaicite:7]{index=7}
-- Instalasi & setting **Videotron** :contentReference[oaicite:8]{index=8}
-- Pengadaan barang & jasa instalasi sistem engineering :contentReference[oaicite:9]{index=9}
-`;
+const projects = [
+  // Ganti isi ini dengan proyek Anda (contoh format)
+  { name: 'Instalasi CCTV Gedung Perkantoran', location: 'Bogor', year: '2025', scope: 'CCTV, konfigurasi, testing' },
+  { name: 'Sound System Live Venue', location: 'Jakarta', year: '2025', scope: 'Instalasi, tuning, commissioning' },
+  { name: 'Access Control & Door Contact', location: 'Depok', year: '2024', scope: 'Access card, wiring, integration' }
+];
 ---
 
 <Layout title="PT. Khasana Berkah Mandiri">
-  <h1 class="mb-6">PT. Khasana Berkah Mandiri</h1>
-<img
-  src="/hero.jpg"
-  alt="PT. Khasana Berkah Mandiri"
-  style="width:100%; max-height:420px; object-fit:cover; border-radius:16px; margin: 24px 0;"
-/>
-  <p class="text-xl mb-8">
-    Mechanical, Electric, Electronic & Engineering — solusi instalasi, perawatan, dan pengadaan sistem engineering gedung.
-  </p>
+  <section style="margin-top: 10px;">
+    <h1 style="margin: 0 0 12px; font-size: 54px; line-height: 1.05; font-weight: 800;">
+      PT. Khasana Berkah Mandiri
+    </h1>
 
-  <Markdown content={explainer} class="mb-10 text-lg" />
+    <p style="margin: 0 0 18px; font-size: 20px; opacity: .92; max-width: 920px;">
+      Mechanical, Electric, Electronic & Engineering — solusi instalasi, perawatan, dan pengadaan sistem engineering gedung.
+    </p>
 
-  <div class="flex flex-wrap gap-4">
-    <a href="mailto:khasanaberkahmandiri@gmail.com" class="btn btn-lg sm:min-w-64">Email Kami</a>
-    <a href="https://wa.me/62817732551" class="btn btn-lg sm:min-w-64">WhatsApp</a>
-  </div>
+    <!-- OPTIONAL: Upload file hero.jpg ke folder /public agar gambar tampil -->
+    <img
+      src="/hero.jpg"
+      alt="PT. Khasana Berkah Mandiri"
+      style="width:100%; max-height:420px; object-fit:cover; border-radius:16px; margin: 18px 0 20px;"
+      loading="eager"
+    />
 
-  <p class="mt-8 text-sm opacity-80">
-    Cibubur City Blok C No 17, JL. Raya Transyogi Nagrak, Gunung Putri, Kab. Bogor · Telp: 0817-732551 :contentReference[oaicite:10]{index=10}
-  </p>
+    <div style="display:flex; flex-wrap: wrap; gap: 12px; margin-top: 10px;">
+      <a href="mailto:khasanaberkahmandiri@gmail.com" class="btn btn-lg sm:min-w-64">Email Kami</a>
+      <a href="https://wa.me/62817732551" class="btn btn-lg sm:min-w-64">WhatsApp</a>
+    </div>
+  </section>
+
+  <section id="layanan" style="margin-top: 46px;">
+    <h2 style="margin: 0 0 10px; font-size: 28px; font-weight: 800;">Layanan Utama</h2>
+    <p style="margin: 0 0 18px; opacity: .9; max-width: 920px;">
+      Kami melayani instalasi, perawatan, dan pengadaan sistem engineering untuk bangunan dan gedung (Electronic, Electric, dan Mekanikal).
+    </p>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px;">
+      {services.map((svc) => (
+        <div style="padding: 16px; border-radius: 16px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04);">
+          <div style="font-weight: 800; font-size: 16px; margin-bottom: 8px;">{svc.title}</div>
+          <div style="opacity: .9; line-height: 1.55;">{svc.desc}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="proyek" style="margin-top: 54px;">
+    <h2 style="margin: 0 0 10px; font-size: 28px; font-weight: 800;">Proyek</h2>
+    <p style="margin: 0 0 18px; opacity: .9; max-width: 920px;">
+      Berikut contoh pekerjaan. Anda bisa mengganti daftar ini sesuai portofolio perusahaan.
+    </p>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+      {projects.map((p) => (
+        <div style="padding: 16px; border-radius: 16px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.03);">
+          <div style="font-weight: 800; margin-bottom: 6px;">{p.name}</div>
+          <div style="opacity: .9; line-height: 1.55;">
+            <div><strong>Lokasi:</strong> {p.location}</div>
+            <div><strong>Tahun:</strong> {p.year}</div>
+            <div><strong>Ruang lingkup:</strong> {p.scope}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="kontak" style="margin-top: 54px; margin-bottom: 20px;">
+    <h2 style="margin: 0 0 10px; font-size: 28px; font-weight: 800;">Kontak</h2>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+      <div style="padding: 16px; border-radius: 16px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.03);">
+        <div style="font-weight: 800; margin-bottom: 8px;">Alamat</div>
+        <div style="opacity: .9; line-height: 1.6;">
+          Cibubur City Blok C No 17, JL. Raya Transyogi Nagrak,<br />
+          Gunung Putri, Kab. Bogor
+        </div>
+      </div>
+
+      <div style="padding: 16px; border-radius: 16px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.03);">
+        <div style="font-weight: 800; margin-bottom: 8px;">Kontak</div>
+        <div style="opacity: .9; line-height: 1.6;">
+          <div><strong>Telepon:</strong> 0817-732551</div>
+          <div><strong>Email:</strong> khasanaberkahmandiri@gmail.com</div>
+          <div><strong>WhatsApp:</strong> <a href="https://wa.me/62817732551">wa.me/62817732551</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
