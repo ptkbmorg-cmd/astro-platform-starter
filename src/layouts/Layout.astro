@@ -6,7 +6,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 interface Props {
-    title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -14,21 +14,72 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>{title}</title>
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="preload" as="font" type="font/woff2" href={interWoff2} crossorigin />
-    </head>
-    <body class="antialiased text-white bg-complementary">
-        <div class="flex flex-col min-h-screen px-6 bg-noise sm:px-12">
-            <div class="flex flex-col w-full max-w-5xl mx-auto grow">
-                <Header />
-                <main class="grow"><slot /></main>
-                <Footer />
-            </div>
-        </div>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" as="font" type="font/woff2" href={interWoff2} crossorigin />
+
+    <style is:global>
+      :root {
+        /* Corporate light palette */
+        --kbm-bg: #eef4ff;            /* light bluish background */
+        --kbm-surface: #ffffff;       /* card / surface */
+        --kbm-text: #0f172a;          /* slate-900 */
+        --kbm-muted: #334155;         /* slate-700 */
+        --kbm-border: rgba(15, 23, 42, 0.12);
+        --kbm-accent: #1d4ed8;        /* blue-700 */
+        --kbm-accent-2: #0ea5e9;      /* sky-500 for subtle accents */
+      }
+
+      html, body {
+        background: var(--kbm-bg) !important;
+        color: var(--kbm-text) !important;
+      }
+
+      /* Make sure text is readable everywhere */
+      h1, h2, h3, h4, h5, h6 { color: var(--kbm-text); }
+      p, li, span, div { color: inherit; }
+
+      /* Links */
+      a { color: var(--kbm-accent); }
+      a:hover { opacity: 0.92; }
+
+      /* Buttons (override DaisyUI/Template pink) */
+      .btn {
+        background: var(--kbm-accent) !important;
+        border-color: var(--kbm-accent) !important;
+        color: #ffffff !important;
+      }
+      .btn:hover { filter: brightness(0.95); }
+
+      /* Soft cards if you add class kbm-card anywhere */
+      .kbm-card {
+        background: var(--kbm-surface);
+        border: 1px solid var(--kbm-border);
+        border-radius: 16px;
+      }
+
+      /* Improve focus style (accessibility) */
+      a:focus-visible, button:focus-visible {
+        outline: 3px solid rgba(29, 78, 216, 0.35);
+        outline-offset: 2px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+
+  <body class="antialiased">
+    <div class="min-h-screen px-6 sm:px-12" style="background: var(--kbm-bg);">
+      <div class="flex flex-col w-full max-w-5xl mx-auto min-h-screen">
+        <Header />
+        <main class="grow" style="color: var(--kbm-text);">
+          <slot />
+        </main>
+        <Footer />
+      </div>
+    </div>
+  </body>
 </html>
