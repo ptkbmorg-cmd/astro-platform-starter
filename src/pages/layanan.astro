@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    title: 'Maintenance (Preventive & Corrective)',
+    points: [
+      'Pengecekan berkala, cleaning, dan pengujian fungsi perangkat.',
+      'Troubleshooting dan perbaikan gangguan (corrective).',
+      'Laporan hasil pekerjaan dan rekomendasi perbaikan.'
+    ]
+  },
+  {
+    title: 'CCTV',
+    points: [
+      'Instalasi kamera, NVR/DVR, dan penarikan kabel.',
+      'Konfigurasi recording, remote viewing, user access.',
+      'Testing, labeling, dan serah terima.'
+    ]
+  },
+  {
+    title: 'Sound System (Gedung & Live Venue)',
+    points: [
+      'Instalasi speaker, amplifier, mixer, dan perangkat pendukung.',
+      'Tuning/setting sesuai kebutuhan area dan akustik.',
+      'Testing & commissioning.'
+    ]
+  },
+  {
+    title: 'Access Control & Security System',
+    points: [
+      'Instalasi access card, reader, controller, dan door contact.',
+      'Konfigurasi akses, jadwal, dan integrasi dasar.',
+      'Uji fungsi dan dokumentasi.'
+    ]
+  },
+  {
+    title: 'Fire Alarm & Fire Protection',
+    points: [
+      'Instalasi perangkat fire alarm dan pendukung (sesuai kebutuhan).',
+      'Pengujian (testing) dan simulasi alarm.',
+      'Dokumentasi hasil pekerjaan.'
+    ]
+  },
+  {
+    title: 'Fiber Optic Network',
+    points: [
+      'Penarikan FO, terminasi, splicing (sesuai kebutuhan).',
+      'OTDR/pengetesan kualitas jalur (jika tersedia).',
+      'Labeling dan dokumentasi jalur.'
+    ]
+  },
+  {
+    title: 'Videotron / LED Display',
+    points: [
+      'Instalasi panel dan struktur pendukung.',
+      'Konfigurasi controller/sending card.',
+      'Testing tampilan dan basic training.'
+    ]
+  },
+  {
+    title: 'Pengadaan',
+    points: [
+      'Pengadaan barang dan jasa instalasi sistem engineering.',
+      'Rekomendasi spesifikasi sesuai kebutuhan & budget.',
+      'Koordinasi delivery dan instalasi.'
+    ]
+  }
+];
+---
+
+<Layout title="Layanan | PT. Khasana Berkah Mandiri">
+  <section>
+    <h1 style="margin: 0 0 10px; font-size: 40px; line-height: 1.15; font-weight: 900;">
+      Layanan
+    </h1>
+    <p style="margin: 0 0 22px; opacity: .92; max-width: 980px; line-height: 1.7;">
+      Detail layanan PT. Khasana Berkah Mandiri untuk instalasi, perawatan, dan pengadaan sistem engineering gedung
+      (Electronic, Electric, dan Mechanical).
+    </p>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+      {services.map((svc) => (
+        <div
+          style="
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px solid rgba(15,23,42,.10);
+            background: #ffffff;
+            box-shadow: 0 10px 26px rgba(15,23,42,.05);
+          "
+        >
+          <div style="font-weight: 900; font-size: 16px; margin-bottom: 10px;">{svc.title}</div>
+          <ul style="margin: 0; padding-left: 18px; line-height: 1.7; opacity: .92;">
+            {svc.points.map((pt) => <li>{pt}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>
