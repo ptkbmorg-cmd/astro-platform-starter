@@ -5,8 +5,18 @@ const navItems = [
   { linkText: 'Home', href: '/' },
   { linkText: 'Layanan', href: '/layanan' },
   { linkText: 'Proyek', href: '/proyek' },
-  { linkText: 'Kontak', href: '/kontak' }
+  { linkText: 'Kontak', href: '/kontak' },
 ];
+
+const path = Astro.url.pathname;
+
+// Active jika:
+// - Home: persis "/"
+// - selain Home: path diawali href (agar /proyek/xxx tetap aktif di Proyek)
+const isActive = (href: string) => {
+  if (href === '/') return path === '/';
+  return path === href || path.startsWith(href + '/');
+};
 ---
 
 <nav class="flex flex-wrap items-center justify-between gap-4 pt-6 pb-10 sm:pt-10 sm:pb-16">
@@ -14,16 +24,34 @@ const navItems = [
     <Logo />
   </a>
 
-  <ul class="flex flex-wrap items-center gap-x-2 gap-y-2">
-    {navItems.map((item) => (
-      <li>
-        <a
-          href={item.href}
-          class="inline-block rounded-lg px-3 py-2 text-sm font-medium opacity-90 hover:opacity-100 hover:bg-black/5 transition"
-        >
-          {item.linkText}
-        </a>
-      </li>
-    ))}
-  </ul>
+  <div class="flex items-center gap-2">
+    <ul class="flex flex-wrap items-center gap-x-2 gap-y-2">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class:list={[
+              "inline-block rounded-lg px-3 py-2 text-sm font-medium transition",
+              "hover:bg-black/5",
+              isActive(item.href)
+                ? "opacity-100 bg-black/5 ring-1 ring-black/10"
+                : "opacity-90 hover:opacity-100"
+            ]}
+            aria-current={isActive(item.href) ? "page" : undefined}
+          >
+            {item.linkText}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- OPTIONAL: CTA corporate -->
+    <a
+      href="/kontak"
+      class="btn rounded-lg px-4 py-2 text-sm font-semibold"
+      style="line-height: 1;"
+    >
+      Minta Penawaran
+    </a>
+  </div>
 </nav>
